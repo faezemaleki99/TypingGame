@@ -9,8 +9,20 @@ import { lorem } from "faker";
 export class AppComponent {
   randomText: string = lorem.sentence()
 
+  inputText: string = ''
+
   onChangeInput(text: Event) {
-    console.log((text.target as HTMLInputElement).value)
+    // console.log((text.target as HTMLInputElement).value)
+    const value = (text.target as HTMLInputElement).value
+
+    this.inputText = value
+  }
+
+  compare(letterRandom: string, letterEnter: string): string {
+    if (!letterEnter) {
+      return 'pending'
+    }
+    return letterRandom === letterEnter ? 'correct' : 'incorrect'
   }
 }
 
